@@ -1,0 +1,223 @@
+<LoginWindow>:
+    name: "login"
+    username:username
+    password: password
+
+    FloatLayout:
+        Label:
+            text:"Username: "
+            font_size: "20sp"
+            pos_hint: {"x":0.1, "top":0.9}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: username
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.86}
+            size_hint: 0.4,0.07
+
+        Label:
+            text:"Password: "
+            font_size: "20sp"
+            pos_hint: {"x":0.1, "top":0.7}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: password
+            font_size: "20sp"
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.66}
+            size_hint: 0.4, 0.07
+
+        Button:
+            pos_hint:{"x":0.35,"y":0.15}
+            size_hint: 0.3, 0.07
+            font_size:"12sp"
+            text: "New User? Create Account"
+            on_release:
+                root.manager.transition.direction = "up"
+                root.manager.current="NewAccountPage"
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.4, 0.1
+            font_size: "20sp"
+            text: "Login"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.login()
+<HomeWindow>:
+    name:"HomePage"
+
+    firstdesc: firstdesc
+    seconddesc:seconddesc
+    thirddesc:thirddesc
+    firstamount:firstamount
+    secondamount:secondamount
+    thirdamount:thirdamount
+
+    Spinner:
+        id: spinner_id
+        on_text: root.spinner_clicked(spinner_id.text)
+        text: "Home"
+        values: ["Home", "See Previous Expense", "Calculator", "Analysis of expense", "Settings", "Contact Developer"]
+        size_hint: None, None
+        size: 200, 50
+        pos_hint:{'center_x':0.13, 'top': 1}
+
+    FloatLayout:
+
+        Label:
+            text:"Description"
+            font_size: "20sp"
+            pos_hint: {"x":0.22, "y":0.68}
+            size_hint: 0.12, 0.15
+
+        Label:
+            text:"Amount Spent (in Rs)"
+            font_size: "20sp"
+            pos_hint: {"x":0.63, "y":0.68}
+            size_hint: 0.12, 0.15
+
+        Label:
+            text:"1"
+            font_size: "20sp"
+            pos_hint: {"x":0, "y":0.6}
+            size_hint: 0.12, 0.15
+
+        TextInput:
+            id: firstdesc
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.1 , "y":0.635}
+            size_hint: 0.4,0.07
+
+        TextInput:
+            id: firstamount
+            font_size: "20sp"
+            multiline: False
+
+            input_filter:'float'
+            pos_hint: {"x":0.55, "y":0.635}
+            size_hint: 0.3, 0.07
+
+        Label:
+            text:"2"
+            font_size: "20sp"
+            pos_hint: {"x":0, "y":0.5}
+            size_hint: 0.12, 0.15
+
+        TextInput:
+            id: seconddesc
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.1 , "y":0.535}
+            size_hint: 0.4,0.07
+
+        TextInput:
+            id: secondamount
+            font_size: "20sp"
+            multiline: False
+
+            input_filter:'float'
+            pos_hint: {"x": 0.55, "y":0.535}
+            size_hint: 0.3, 0.07
+
+        Label:
+            text:"3"
+            font_size: "20sp"
+            pos_hint: {"x":0, "y":0.4}
+            size_hint: 0.12, 0.15
+
+        TextInput:
+            id: thirddesc
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.1, "y":0.435}
+            size_hint: 0.4, 0.07
+
+        TextInput:
+            id: thirdamount
+            font_size: "20sp"
+            multiline: False
+            input_filter:'float'
+            pos_hint: {"x": 0.55, "y":0.435}
+            size_hint: 0.3, 0.07
+
+        Button:
+            pos_hint:{"x":0.6,"y":0.15}
+            size_hint: 0.3, 0.1
+            font_size: "20sp"
+            text: "Submit"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.submit()
+
+        Button:
+            pos_hint:{"x":0.27,"y":0.15}
+            size_hint: 0.3, 0.1
+            font_size: "20sp"
+            text: "Save and Add More"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.addmore()
+
+<NewAccount>:
+    name:"NewAccountPage"
+    username:username
+    password: password
+    email:email
+    FloatLayout:
+        Label:
+            text:"Email: "
+            font_size: "20sp"
+            pos_hint: {"x":0.1, "top":0.99}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: email
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.95}
+            size_hint: 0.4,0.07
+
+
+        Label:
+            text:"Username: "
+            font_size: "20sp"
+            pos_hint: {"x":0.1, "top":0.82}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: username
+            font_size: "20sp"
+            multiline: False
+            pos_hint: {"x": 0.45 , "top":0.78}
+            size_hint: 0.4,0.07
+
+        Label:
+            text:"Password: "
+            font_size: "20sp"
+            pos_hint: {"x":0.1, "top":0.65}
+            size_hint: 0.35, 0.15
+
+        TextInput:
+            id: password
+            font_size: "20sp"
+            multiline: False
+            password: True
+            pos_hint: {"x": 0.45, "top":0.61}
+            size_hint: 0.4, 0.07
+
+        Button:
+            pos_hint:{"x":0.3,"y":0.3}
+            size_hint: 0.35, 0.1
+            font_size: "20sp"
+            text: "Submit"
+            on_release:
+                root.manager.transition.direction = "right"
+                root.submit()
+
+
